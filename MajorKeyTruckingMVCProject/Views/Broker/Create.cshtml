@@ -1,0 +1,44 @@
+﻿@model MajorKeyTrucking.Data.Models.Broker
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h5><a class="btn-outline-warning" asp-area="" asp-controller="Load" asp-action="Create">back To Loads</a></h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="BrokerCompanyName" class="control-label font-weight-bold"></label>
+                <input asp-for="BrokerCompanyName" class="form-control" />
+                <span asp-validation-for="BrokerCompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrokerPhoneNumber" class="control-label font-weight-bold"></label>
+                <input asp-for="BrokerPhoneNumber" class="form-control" />
+                <span asp-validation-for="BrokerPhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrokerEmail" class="control-label font-weight-bold"></label>
+                <input asp-for="BrokerEmail" class="form-control" />
+                <span asp-validation-for="BrokerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

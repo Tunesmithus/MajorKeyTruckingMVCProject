@@ -1,0 +1,76 @@
+﻿@model MajorKeyTrucking.Data.Models.Expense
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Expense</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-2">
+                <label asp-for="ExpenseName" class=" font-weight-bold"></label>
+                <select class="form-control" asp-for="ExpenseName">
+                    <option value="">Select Category</option>
+                    <option value="Cash Advance">Cash Advance</option>
+                    <option value="Dispatch">Dispatch</option>
+                    <option value="Truck Maintenance">Truck Maintenance</option>
+                    <option value="Auto Insurance">Auto Insurance</option>
+                    
+                </select>
+                <span asp-validation-for="ExpenseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseDate" class="control-label font-weight-bold"></label>
+                <input asp-for="ExpenseDate" class="form-control" />
+                <span asp-validation-for="ExpenseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseCost" class="control-label font-weight-bold"></label>
+                <input asp-for="ExpenseCost" class="form-control" />
+                <span asp-validation-for="ExpenseCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseDescription" class="control-label font-weight-bold"></label>
+                <input asp-for="ExpenseDescription" class="form-control" />
+                <span asp-validation-for="ExpenseDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverId" class="control-label font-weight-bold">Driver</label>
+                <select asp-for="DriverId" class="form-control" asp-items="@(new SelectList(ViewBag.DriverList, "DriverId", "FullName"))">
+                    <option value="">Assign Driver</option>
+                </select>
+                <span asp-validation-for="DriverId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TruckId" class="control-label font-weight-bold">Truck</label>
+                <select asp-for="TruckId" class="form-control" asp-items="@(new SelectList(ViewBag.TruckList, "TruckId", "EquipmentNumber"))">
+                    <option value="">Assign Truck</option>
+                </select>
+                <span asp-validation-for="TruckId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrailerId" class="control-label font-weight-bold">Trailer</label>
+                <select asp-for="TrailerId" class="form-control" asp-items="@(new SelectList(ViewBag.TrailerList, "TrailerId", "TrailerNumber"))">
+                    <option value="">Assign Trailer</option>
+                </select>
+                <span asp-validation-for="TrailerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

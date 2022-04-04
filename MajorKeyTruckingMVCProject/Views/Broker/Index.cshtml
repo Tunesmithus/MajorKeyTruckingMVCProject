@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MajorKeyTrucking.Data.Models.Broker>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BrokerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrokerCompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrokerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrokerPhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrokerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrokerCompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrokerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrokerPhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.BrokerId}) |
+                @Html.ActionLink("Details", "Details", new { id = item.BrokerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BrokerId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

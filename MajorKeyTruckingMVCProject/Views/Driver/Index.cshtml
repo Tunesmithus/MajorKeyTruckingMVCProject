@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MajorKeyTrucking.Data.Driver>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Current List Of Drivers</h1>
+
+<p>
+
+    <a class="btn btn-primary" asp-action="Create">Add New Driver</a>
+</p>
+<table class="table table-hover table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverPay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverPay)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DriverId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DriverId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DriverId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

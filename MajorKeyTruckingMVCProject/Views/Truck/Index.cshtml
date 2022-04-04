@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MajorKeyTrucking.Data.Models.Truck>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Trucks</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EquipmentNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VinNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipmentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VinNumber)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TruckId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TruckId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TruckId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

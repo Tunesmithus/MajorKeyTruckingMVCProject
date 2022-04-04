@@ -1,0 +1,109 @@
+﻿@model MajorKeyTrucking.Data.Models.Load
+
+
+
+@{
+    ViewData["Title"] = "Create";
+    
+}
+
+<h1>Create</h1>
+
+<h4>Load</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <a class="btn btn-primary" asp-area="" asp-controller="Broker" asp-action="Create">Add New Broker</a>
+
+            <div class="form-group">
+                <label asp-for="BrokerId" class="control-label font-weight-bold"></label>
+                <select asp-for="BrokerId" class="form-control" asp-items="@(new SelectList(ViewBag.BrokerList, "BrokerId", "BrokerCompanyName").OrderBy(b => b.Text))">
+                    <option value="">Select Broker</option>
+                </select>
+                <span asp-validation-for="BrokerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoadNumber" class="control-label font-weight-bold"></label>
+                <input asp-for="LoadNumber" class="form-control" />
+                <span asp-validation-for="LoadNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnloadedMiles" class="control-label font-weight-bold"></label>
+                <input asp-for="UnloadedMiles" class="form-control " />
+                <span asp-validation-for="UnloadedMiles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoadedMiles" class="control-label font-weight-bold"></label>
+                <input asp-for="LoadedMiles" class="form-control" id="loadedMiles" />
+                <span asp-validation-for="LoadedMiles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PickUpDate" class="control-label font-weight-bold"></label>
+                <input asp-for="PickUpDate" class="form-control" type="date" />
+                <span asp-validation-for="PickUpDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryDate" class="control-label font-weight-bold"></label>
+                <input asp-for="DeliveryDate" class="form-control" type="date" />
+                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoadPay" class="control-label font-weight-bold"></label>
+                <input asp-for="LoadPay" class="form-control" id="loadPay" />
+                <span asp-validation-for="LoadPay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RatePerMile" class="control-label font-weight-bold"></label>
+                <input asp-for="RatePerMile" class="form-control" value="" placeholder="Rate Per Mile" />
+                <span asp-validation-for="RatePerMile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverId" class="control-label font-weight-bold">Driver</label>
+                <select asp-for="DriverId" class="form-control" asp-items="@(new SelectList(ViewBag.DriverList, "DriverId", "FullName"))">
+                    <option value="">Assign Driver</option>
+                </select>
+                <span asp-validation-for="DriverId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TruckId" class="control-label font-weight-bold">Truck</label>
+                <select asp-for="TruckId" class="form-control" asp-items="@(new SelectList(ViewBag.TruckList, "TruckId", "EquipmentNumber").OrderBy(t => t.Text))">
+                    <option value="">Assign Truck</option>
+                </select>
+                <span asp-validation-for="TruckId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrailerId" class="control-label font-weight-bold">Trailer</label>
+                <select asp-for="TrailerId" class="form-control" asp-items="@(new SelectList(ViewBag.TrailerList, "TrailerId", "TrailerNumber"))">
+                    <option value="">Assign Trailer</option>
+                </select>
+                <span asp-validation-for="TrailerId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit Load" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $(documnent).ready(function () {
+        $("button").click(function () {
+            $("#ratePerMile").hide();
+        })
+
+        
+    });
+</script>
+
+
+}

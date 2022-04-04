@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MajorKeyTrucking.Data.Models.Expense>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ExpenseId}) |
+                @Html.ActionLink("Details", "Details", new { id=item.ExpenseId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ExpenseId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

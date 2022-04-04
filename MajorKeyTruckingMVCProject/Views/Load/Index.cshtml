@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MajorKeyTrucking.Data.Models.Load>
+   
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List Of Loads</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover table-striped">
+
+    <thead class="thead-dark">
+        <tr >
+            <th>
+                @Html.DisplayNameFor(model => model.Broker)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.LoadNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnloadedMiles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoadedMiles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickUpDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoadPay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RatePerMile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrokerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoadNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnloadedMiles)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoadedMiles)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoadPay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RatePerMile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LoadId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LoadId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LoadId })
+            </td>
+        </tr>
+}
+    </tbody>
+    
+</table>
+<div class="col-2">
+    <button class="btn btn-success" >
+        @Html.ActionLink("Create Settlement", "CreatePdf", "Load")
+    </button>
+</div>
